@@ -1,0 +1,64 @@
+---
+- name: Install zsh
+  pacman:
+    name:
+      - zsh
+    state: present
+
+- name: Install vim
+  pacman:
+    name:
+      - vim
+    state: present
+
+- name: Install gcc
+  pacman:
+    name:
+      - gcc
+    state: present
+
+- name: Install git
+  pacman:
+    name:
+      - git
+    state: present
+
+- name: Install tmux
+  pacman:
+    name:
+      - tmux
+    state: present
+
+- name: Install htop
+  pacman:
+    name:
+      - htop
+    state: present
+
+- name: Install fzf
+  pacman:
+    name:
+      - fzf
+    state: present
+
+- name: Install snapd
+  pacman:
+    name:
+      - snapd
+    state: present
+
+- name: Install chromium
+  pacman:
+    name:
+      - chromium
+    state: present
+
+- name: Install nvm
+  shell: >
+    curl https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | sh
+    creates=/home/{{ ansible_user_id }}/.nvm/nvm.sh
+
+- name: Install node and set version
+  shell: >
+    /bin/bash -c "source ~/.nvm/nvm.sh && nvm install 0.10 && nvm alias default 0.10"
+    creates=/home/{{ ansible_user_id }}/.nvm/alias

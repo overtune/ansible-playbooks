@@ -1,0 +1,6 @@
+---
+- hosts: phone
+  become: yes
+  roles:
+    - {role: software, tags: ['software']}
+    - {role: user, tags: ['user']}
